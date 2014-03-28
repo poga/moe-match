@@ -1,0 +1,65 @@
+.grid {
+  margin-top: 100px !important;
+}
+.sliding {
+  top: 25px;
+  position: absolute;
+  -webkit-animation: test 15s;
+  -moz-animation: test 15s;
+  -o-animation: test 15s;
+  -ms-animation: test 15s;
+  animation: test 15s;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  -ms-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+#board {
+  margin: 0 auto;
+}
+@-moz-keyframes test {
+  0% {
+    left: 0;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+@-webkit-keyframes test {
+  0% {
+    left: 0;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+@-o-keyframes test {
+  0% {
+    left: 0;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+@-ms-keyframes test {
+  0% {
+    left: 0;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+@keyframes test {
+  0% {
+    left: 0;
+  }
+
+  100% {
+    left: 100%;
+  }
+}

@@ -1,0 +1,14 @@
+bower_components/
+node_modules/
+index.html
+dict-revised.json
+
+/common.1.json
+/common.2.json
+/common.3.json
+
+/index.js
+
+/pos.json
+
+/tone.json
