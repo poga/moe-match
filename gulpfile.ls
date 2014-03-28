@@ -22,4 +22,4 @@ gulp.task 'stylus' ->
 gulp.task \default ->
   gulp.watch './index.styl' <[stylus]>
   gulp.watch './index.jade' <[jade]>
-  gulp.watch './index.ls' <[ls]>
+  #gulp.watch './index.ls' <[ls]>

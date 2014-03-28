@@ -1,16 +1,38 @@
+create-block = ->
+  if Math.random! > 0.5
+    x = window.seq.0
+    if x
+      $ \body .prepend "<div class='ui huge button sliding'>#x</div>"
+  else
+    i = Math.floor Math.random!*(Object.keys(window.TONES).length)
+    x = Object.keys(window.TONES)[i]
+    if x
+      $ "<div class='ui huge button sliding'>#x</div>" .prependTo \body
+  
+check-row = (i) ->
+  to-simbol = (bool) ->
+    switch bool
+    | true  => "✓"
+    | false => "✗"
+  str = ""
+  $ "\#r#i" .children \td .children \div .each (i, x) ->
+    str += $(x).html! if $(x).html! != "&nbsp;&nbsp;"
+  console.log str
+  if str.length == 5 and check-tone window.q, str
+    alert """
+    #{window.q.join ""}，#{str}。
+    
+    斷詞：#{ to-simbol check-token window.q, str }
+    平仄：#{ to-simbol check-tone window.q, str }
+    詞性：#{ to-simbol check-pos window.q, str }
+    """
+
 check-token = (words, sentence) ->
   i = 0
   for l in words.map(-> it.length)
     return false unless window.WORDS[l][sentence.substr(i, l)]
     i++
   true
-
-check-row = (i) ->
-  str = ""
-  $ "\#r#i" .children \td .children \div .each (i, x) ->
-    str += $(x).html! if $(x).html! != "&nbsp;&nbsp;"
-  if str.length == 5 and check-tone window.q, str
-    alert "COMPLETE!"
 
 check-tone = (words, sentence) ->
   i = 0
@@ -36,8 +58,7 @@ check-radical = (words, sentence) ->
   false
 
 bind-q = (q) ->
-  for w, i in q.split ""
-    console.log w, i
+  for w, i in q.join "" .split ""
     $ "\#q#i" .html w
 
 window.WORDS = {}
@@ -57,10 +78,10 @@ window.POS = pos
 
 <- $
 window.seq = <[零 媒 現 真 實]>
-console.log check-token <[國 泰 民 安]>, \風調雨順
-console.log check-tone <[漏盡 飛身 去]>, \心空及第歸
-console.log check-pos <[漏盡 飛身 去]>, \心空及第歸
-window.q = "馬鹿如唬口"
+window.q = <[馬 鹿 如 唬 口]>
+  #console.log check-token <[國 泰 民 安]>, \風調雨順
+  #console.log check-tone <[漏盡 飛身 去]>, \心空及第歸
+  #console.log check-pos <[漏盡 飛身 去]>, \心空及第歸
 bind-q window.q
 
 $ \body .on \click ".sliding" ->
@@ -82,19 +103,6 @@ $ \body .on \click ".slot" ->
 $ \body .on "animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd" ".sliding" ->
   console.log \end
   $ this .remove!
-
-create-block = ->
-  if Math.random! > 0.5
-    console.log window.seq
-    x = window.seq.0
-    if x
-      $ \body .prepend "<div class='ui huge button sliding'>#x</div>"
-  else
-    i = Math.floor Math.random!*(Object.keys(window.TONES).length)
-    x = Object.keys(window.TONES)[i]
-    if x
-      $ "<div class='ui huge button sliding'>#x</div>" .prependTo \body
-  
 
 create-block!
 <- setInterval _, 1000ms
