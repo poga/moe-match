@@ -19,6 +19,7 @@ check-row = (i) ->
     str += $(x).html! if $(x).html! != "&nbsp;&nbsp;"
   console.log str
   if str.length == 5 and check-tone window.q, str
+    $ "\#r#i" .children \td .children \div .addClass \green
     alert """
     #{window.q.join ""}，#{str}。
     
