@@ -10,7 +10,7 @@ create-block = ->
       $ "<div class='ui huge button sliding'>#x</div>" .prependTo \body
   
 check-row = (i) ->
-  to-simbol = (bool) ->
+  to-symbol = (bool) ->
     switch bool
     | true  => "✓"
     | false => "✗"
@@ -22,9 +22,9 @@ check-row = (i) ->
     alert """
     #{window.q.join ""}，#{str}。
     
-    斷詞：#{ to-simbol check-token window.q, str }
-    平仄：#{ to-simbol check-tone window.q, str }
-    詞性：#{ to-simbol check-pos window.q, str }
+    斷詞：#{ to-symbol check-token window.q, str }
+    平仄：#{ to-symbol check-tone window.q, str }
+    詞性：#{ to-symbol check-pos window.q, str }
     """
 
 check-token = (words, sentence) ->
